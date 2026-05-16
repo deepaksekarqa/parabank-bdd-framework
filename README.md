@@ -51,33 +51,45 @@ This project covers the complete banking workflow — from user registration to 
 ## 📁 Project Structure
 
 ```
-ParabankAutomation/
-├── src/
-│   ├── main/java/
-│   │   └── base/
-│   │       └── BaseClass.java          ← WebDriver setup and teardown
-│   └── test/java/
-│       ├── hooks/
-│       │   └── Hooks.java              ← @Before / @After (Cucumber)
-│       ├── runner/
-│       │   └── TestRunner.java         ← Cucumber TestNG runner
-│       └── stepDefinitions/
-│           ├── RegisterSteps.java
-│           ├── LoginSteps.java
-│           ├── OpenAccountSteps.java
-│           ├── TransferFundsSteps.java
-│           ├── BillPaySteps.java
-│           └── LogoutSteps.java
-├── src/test/resources/
-│   └── features/
-│       ├── Register.feature
-│       ├── Login.feature
-│       ├── OpenAccount.feature
-│       ├── TransferFunds.feature
-│       ├── BillPay.feature
-│       └── Logout.feature
-├── pom.xml
-└── testng.xml
+ParaBankBDD/
+├── pom.xml                              Maven build & dependency configuration
+├── testng.xml                           TestNG suite — points to TestRunner
+└── src/
+    ├── main/
+    │   └── java/
+    │       ├── base/
+    │       │   └── BaseClass.java       WebDriver setup, teardown, shared variables
+    │       └── pages/
+    │           ├── HomePage.java        Register link
+    │           ├── RegisterPage.java    Registration form
+    │           ├── LoginPage.java       Login form
+    │           ├── AccountOverviewPage  Accounts overview validation
+    │           ├── OpenNewAccountPage   Open savings account
+    │           ├── TransferFundsPage    Fund transfer
+    │           ├── BillPayPage          Bill payment
+    │           └── LogoutPage           Logout
+    └── test/
+        ├── java/
+        │   ├── stepDefinitions/
+        │   │   ├── Hooks.java           @Before + @After (all scenarios)
+        │   │   ├── RegisterSteps.java   Register scenario steps
+        │   │   ├── LoginSteps.java      Login scenario steps
+        │   │   ├── OpenAccountSteps     Open account steps
+        │   │   ├── TransferFundsSteps   Transfer funds steps
+        │   │   ├── BillPaySteps         Bill pay steps
+        │   │   └── LogoutSteps          Logout steps
+        │   ├── runner/
+        │   │   └── TestRunner.java      Cucumber + TestNG runner class
+        │   └── utils/
+        │       └── DBUtils.java         SQL/JDBC backend validation pattern
+        └── resources/
+            └── features/
+                ├── Register.feature
+                ├── Login.feature
+                ├── OpenAccount.feature
+                ├── TransferFunds.feature
+                ├── BillPay.feature
+                └── Logout.feature
 ```
 
 ---
